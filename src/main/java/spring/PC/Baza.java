@@ -49,7 +49,7 @@ String CNot = "background-color:Tomato;";
     @RequestMapping("/")
     public String indexGet(){
 
-        return "/main";
+        return "main";
     }
 
     @RequestMapping("/addRepository")
