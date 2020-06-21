@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                      xmlns:th="http://www.thymeleaf.org"
+                      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+                      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,6 +23,7 @@
             <a href="/viewComponets"class="btn btn-success" role="button">ADD COMPONENT TO YOUR SET</a><br><br>
             <a href="/viewSetList"class="btn btn-primary" role="button">SHOW YOUR SET</a><br><br>
             <a href="/addRepository"class="btn btn-danger" role="button">ADD COMPONENTS TO DATABASE</a><br><br>
+            <a href="/deleteRepository"class="btn btn-danger" role="button">DELETE COMPONENTS FROM DATABASE</a><br><br>
         </div>
 
     </div>
