@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Lista Grafik</title>
+    <style>
+        table {
+            width:100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        tr:nth-child(even) {
+            background-color: #eee;
+        }
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        th {
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body class="p-3 mb-2 bg-bark text-white"   style="background-color:rgb(211, 129, 167);">
+
+
+<div class= "jumbotron text-center"  style="background-color:rgb(0, 255, 49);">
+    <h1>Add Component</h1>
+</div>
+<div class="container">
+</div>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>In Your Set</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <div class= "text-center">
+        <a href="/index"  class="btn btn-info" role="button">Main Menu</a>
+    </div>
+    <tr>
+        <td style="font-size:25px;" th:text=Grafika></td>
+        <td style="font-size:25px;" th:text="${graphic}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewGraphic}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+
+
+    </tr>
+    <tr>
+        <td style="font-size:25px;" th:text=Procesor></td>
+        <td style="font-size:25px;" th:text="${processor}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewProcesor}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size:25px;" th:text=ComputerCase></td>
+        <td style="font-size:25px;" th:text="${case}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewComputerCase}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+
+
+    </tr>
+    <tr>
+        <td style="font-size:25px;" th:text=Ram></td>
+        <td style="font-size:25px;" th:text="${ram}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewRamCase}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+
+
+    </tr>
+
+    <tr>
+        <td style="font-size:25px;" th:text=MotherBoard></td>
+        <td style="font-size:25px;" th:text="${motherBoard}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewMotherBoard}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+
+
+    </tr>
+
+    <tr>
+        <td style="font-size:25px;" th:text=MemoryDisc></td>
+        <td style="font-size:25px;" th:text="${memoryDisc}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewMemoryDisc}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+
+
+    </tr>
+    <tr>
+        <td style="font-size:25px;" th:text=Cooler></td>
+        <td style="font-size:25px;" th:text="${cooler}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewCooler}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+
+
+    </tr>
+    <tr>
+        <td style="font-size:25px;" th:text=PowerSupply></td>
+        <td style="font-size:25px;" th:text="${powerSupply}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/viewPowerSupply}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+
+
+    </tr>
+    </tbody>
+</table>
+<div class= "text-center">
+    <a href="/index" class="btn btn-info" role="button">Main Menu</a>
+    <a href="/viewSetList"class="btn btn-primary" role="button">VIEW YOUR SET</a><br>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
