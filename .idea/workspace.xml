@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c83c750f-f9e2-4167-897c-4c5193710b18" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c83c750f-f9e2-4167-897c-4c5193710b18" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -144,7 +142,7 @@
       <workItem from="1591885592989" duration="1869000" />
       <workItem from="1592216383782" duration="10858000" />
       <workItem from="1592297277482" duration="12624000" />
-      <workItem from="1592474761347" duration="47376000" />
+      <workItem from="1592474761347" duration="47687000" />
     </task>
     <task id="LOCAL-00001" summary="Confing on heroku database">
       <created>1592745256197</created>
@@ -181,7 +179,21 @@
       <option name="project" value="LOCAL" />
       <updated>1592747150369</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Config 5">
+      <created>1592747514526</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1592747514526</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Heroku final">
+      <created>1592747740380</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1592747740380</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,7 +204,9 @@
     <MESSAGE value="Confing2 on heroku database" />
     <MESSAGE value="Confing3 on heroku database" />
     <MESSAGE value="Config 4" />
-    <option name="LAST_COMMIT_MESSAGE" value="Config 4" />
+    <MESSAGE value="Config 5" />
+    <MESSAGE value="Heroku final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Heroku final" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Assign_Data_Sources" timestamp="1592335838725">
@@ -235,10 +249,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1592740257448" />
-    <state x="317" y="6" key="CommitChangelistDialog2" timestamp="1592747511632">
+    <state x="317" y="6" key="CommitChangelistDialog2" timestamp="1592747784938">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="317" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592747511632" />
+    <state x="317" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592747784938" />
     <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1592217327536">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -295,10 +309,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1590660242358" />
-    <state x="485" y="157" key="Vcs.Push.Dialog.v2" timestamp="1592747516783">
+    <state x="485" y="157" key="Vcs.Push.Dialog.v2" timestamp="1592747753140">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="485" y="157" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592747516783" />
+    <state x="485" y="157" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592747753140" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1590660361424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
