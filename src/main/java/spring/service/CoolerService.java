@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class CoolerService {
     private final CoolerRepositroy repository;
 
-
+    public void delete(){repository.deleteAll();}
     public void save(final Cooler cooler) {
         repository.save(cooler);
     }

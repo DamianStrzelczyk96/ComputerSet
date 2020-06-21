@@ -20,6 +20,7 @@ public class ComputerCaseService {
     public void save(final ComputerCase ComputerCase) {
         repository.save(ComputerCase);
     }
+public void delete(){repository.deleteAll();}
 
     public Set<ComputerCase> getAll() {
 

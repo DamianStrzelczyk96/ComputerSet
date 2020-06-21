@@ -16,7 +16,7 @@ public class MemoryDiscService {
 
     private final MemoryDiscRepository repository;
 
-
+    public void delete(){repository.deleteAll();}
     public void save(final MemoryDisc memoryDisc) {
         repository.save(memoryDisc);
     }

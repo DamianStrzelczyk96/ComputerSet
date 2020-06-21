@@ -15,7 +15,7 @@ public class GraphicService {
 
     private final GraphicRepository repository;
 
-
+    public void delete(){repository.deleteAll();}
     public void save(final Graphic graphic) {
         repository.save(graphic);
     }

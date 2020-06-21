@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class PowerSupplyService  {
 
     private final PowerSupplyRepository repository;
-
+    public void delete(){repository.deleteAll();}
 
     public void save(final PowerSupply powerSupply) {
         repository.save(powerSupply);

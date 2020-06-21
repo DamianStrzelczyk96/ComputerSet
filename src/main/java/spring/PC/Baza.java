@@ -52,6 +52,19 @@ String CNot = "background-color:Tomato;";
         return "main";
     }
 
+    @RequestMapping("/deleteRepository")
+    public String deleteRepository(){
+        graphicService.delete();
+        coolerService.delete();
+        computerCaseService.delete();
+        memoryDiscService.delete();
+        motherBoardService.delete();
+        powerSupplyService.delete();
+        procesorService.delete();
+        ramService.delete();
+        return "main";
+    }
+
     @RequestMapping("/addRepository")
     public String addRepository() throws IOException {
         Graphic geForce = new Graphic();

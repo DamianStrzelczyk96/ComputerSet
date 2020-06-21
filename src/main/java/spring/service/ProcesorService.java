@@ -19,7 +19,7 @@ public class ProcesorService {
     public void save(final Procesor procesor) {
         repository.save(procesor);
     }
-
+    public void delete(){repository.deleteAll();}
     public Set<Procesor> getAll() {
 
         return repository.findAll().stream().collect(Collectors.toSet());

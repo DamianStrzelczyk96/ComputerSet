@@ -16,7 +16,7 @@ public class MotherBoardService {
 
 
     private final MotherBordRepository repository;
-
+    public void delete(){repository.deleteAll();}
 
     public void save(final MotherBord motherBord) {
         repository.save(motherBord);

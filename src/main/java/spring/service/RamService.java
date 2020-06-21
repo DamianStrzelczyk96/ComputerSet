@@ -18,7 +18,7 @@ public class RamService {
     public void save(final Ram ram) {
         repository.save(ram);
     }
-
+    public void delete(){repository.deleteAll();}
     public Set<Ram> getAll() {
         return repository.findAll().stream().collect(Collectors.toSet());
     }
