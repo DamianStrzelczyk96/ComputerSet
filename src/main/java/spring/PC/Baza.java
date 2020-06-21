@@ -114,7 +114,7 @@ String CNot = "background-color:Tomato;";
         BeQuietPower.setPrice(450);
         powerSupplyService.save(BeQuietPower);
 
-        return "/main";
+        return "main";
     }
 
 
@@ -159,7 +159,7 @@ String CNot = "background-color:Tomato;";
                     break;
         }}
 
-        return "/addComponent";
+        return "addComponent";
     }
 
     @RequestMapping("/viewGraphic")
@@ -167,7 +167,7 @@ String CNot = "background-color:Tomato;";
         model.addAttribute("list", getGraphicList());
         model.addAttribute("dodaj","/dodajGraphic");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
 
     @RequestMapping("/viewProcesor")
@@ -175,7 +175,7 @@ String CNot = "background-color:Tomato;";
         model.addAttribute("list", getListProcesor());
         model.addAttribute("dodaj","/dodajProcesor");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
 
     @RequestMapping("/viewComputerCase")
@@ -183,7 +183,7 @@ String CNot = "background-color:Tomato;";
         model.addAttribute("list", getComputerCaseList());
         model.addAttribute("dodaj","/dodajComputerCase");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
 
     @RequestMapping("/viewRamCase")
@@ -191,7 +191,7 @@ String CNot = "background-color:Tomato;";
         model.addAttribute("list", getRamList());
         model.addAttribute("dodaj","/dodajRam");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
 
     @RequestMapping("/viewMotherBoard")
@@ -199,7 +199,7 @@ String CNot = "background-color:Tomato;";
         model.addAttribute("list", getMotherBoardList());
         model.addAttribute("dodaj","/dodajMotherBoard");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
 
     @RequestMapping("/viewMemoryDisc")
@@ -207,25 +207,25 @@ String CNot = "background-color:Tomato;";
         model.addAttribute("list", getListMemoryDisc());
         model.addAttribute("dodaj","/dodajMemoryDisc");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
     @RequestMapping("/viewCooler")
     public String viewListCooler(Model model) {
         model.addAttribute("list", getListCooler());
         model.addAttribute("dodaj","/dodajCooler");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
     @RequestMapping("/viewPowerSupply")
     public String viewListPowerSupply(Model model) {
         model.addAttribute("list", getListPowerSupply());
         model.addAttribute("dodaj","/dodajPowerSupply");
 
-        return "/listComputerCase";
+        return "listComputerCase";
     }
 
     @RequestMapping(value = "/index")
-    public ModelAndView menu(Model model){return new ModelAndView("/main");}
+    public ModelAndView menu(Model model){return new ModelAndView("main");}
 
     @RequestMapping(value = "/dodajGraphic", method = RequestMethod.POST)
     public ModelAndView add(@RequestParam(value = "geForce.name") String name) {
@@ -345,20 +345,10 @@ String CNot = "background-color:Tomato;";
         model.addAttribute("price",total);
         model.addAttribute("list",set);
 
-      return "/listSet";
+      return "listSet";
     }
 
 
-    @RequestMapping("/viewSetSum")
-    public ModelAndView viewSetSum(Model model) {
-        total =0;
-        for (PeCet price:set
-        ) {total=price.price+total;
-
-        }
-        return new ModelAndView("/listSet", "sum", total);
-
-    }
 
     @RequestMapping(value = "/usun", method = RequestMethod.POST)
     public ModelAndView delete(@RequestParam(value = "name") String name) {
