@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>FINAL</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class= "text-center">
+
+<h2>THANK YOU FOR ORDER</h2>
+<p style="font-size:20px;">Please send the amount:</p>
+<p style="font-size:30px;" th:text="${totalSum}"></p>
+<p style="font-size:20px;">On this account number:</p>
+<h1>29 9291 0001 0084 4718 3000 0010</h1>
+<p style="font-size:20px;">With title:</p>
+<p style="font-size:30px;" th:text="${idOrder}"}></p>
+    <a href="/newOrder" class="btn btn-info" role="button">New Order</a>
+</div>
+</body>
+</html>

@@ -17,15 +17,15 @@ public class Cooler extends PeCet {
     @Id
     @GeneratedValue
     private int id;
-    int price;
-    String name;
-    int item;
-    String photoLink;
+    private int price;
+    private String name;
+    private int item;
+    private String photoLink;
     @Column
     @Lob
-    ImageIcon photo;
+    private ImageIcon photo;
 
-    public int getPrice() {
+ /*   public int getPrice() {
         return price;
     }
 
@@ -45,13 +45,13 @@ public class Cooler extends PeCet {
     }
     public int getItem() {
         return item;
-    }
+    }*/
 
-    @Override
+/*    @Override
     public String toString() {
         return "spring.spring.PC.PC.pc.Graphic{" +
                 "price=" + price +
                 ", name='" + name + '\'' + "photo= " + photo +
                 '}';
-    }
+    }*/
 }

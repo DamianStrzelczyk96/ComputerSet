@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" type="text/css">
+    <title>AddCustomer</title>
+</head>
+<body>
+<hr>
+<div class="container">
+    <h2>Give Informations</h2>
+    <div class="form-group">
+        <form action="#" th:action="@{/addCustomer}" th:object="${customer}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <input type="text" class="form-control" th:field="*{name}" placeholder="Name" required><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('surName')}" th:errors="*{surName}"></p>
+            <input type="text" class="form-control" th:field="*{surName}" placeholder="SurName" required><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}"></p>
+            <input type="text" class="form-control" th:field="*{adress}" placeholder="Adress" required><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <input type="email" class="form-control" th:field="*{email}" placeholder="Email" required><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></p>
+            <input type="text" class="form-control" th:field="*{telephone}" placeholder="Telephone"><br>
+
+
+            <input type="submit" th:value="Save" class="btn btn-danger">
+        </form>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

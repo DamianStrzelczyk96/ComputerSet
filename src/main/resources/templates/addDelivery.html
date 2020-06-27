@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class= "text-center">
+    <h1>Choice type of delivery</h1>
+</div>
+<div class="container" >
+</div>
+<table class="table table-bordered" style="background-color:rgb(255, 255, 255);">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-th-each="geForce : ${transport}" >
+        <td th:text="${geForce.name}"></td>
+        <td th:text="${geForce.price}"></td>
+        <td class="action-td">
+            <form method="post" th:action="#" th:action="@{/addDelivery}">
+                <input type="hidden" th:name="transport" th:value="${geForce.name}">
+                <input type="submit" class="btn btn-danger" value="ADD" >
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

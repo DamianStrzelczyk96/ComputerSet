@@ -3,17 +3,20 @@ package spring.PC;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import spring.PC.Components.*;
+import spring.PC.Order.Customer;
+import spring.PC.Order.Transport;
 import spring.service.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.validation.Valid;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +24,9 @@ import java.util.Set;
 @RequiredArgsConstructor
 @Controller
 public class Baza extends JPanel{
+    int localID;
+    int localListID;
+    private final CustomerService customerService;
     private final GraphicService graphicService;
     private final ComputerCaseService computerCaseService;
     private final RamService ramService;
@@ -40,20 +46,26 @@ public class Baza extends JPanel{
     List<PeCet> set = new ArrayList<>();
     Set<Ram> listRam = new HashSet<>();
     Graphic geForce = new Graphic();
+    List<Customer>customerList = new ArrayList<>();
+    Set<Transport>transportSet = new HashSet<>();
 String Ok="Yes";
 String Not="No";
 String COk ="background-color:DodgerBlue;";
 String CNot = "background-color:Tomato;";
-    BufferedImage img;
+
+
+
+
 
     @RequestMapping("/")
     public String indexGet(){
 
         return "main";
-    }
+}
 
     @RequestMapping("/deleteRepository")
     public String deleteRepository(){
+        transportSet.clear();
         graphicService.delete();
         coolerService.delete();
         computerCaseService.delete();
@@ -67,6 +79,16 @@ String CNot = "background-color:Tomato;";
 
     @RequestMapping("/addRepository")
     public String addRepository() throws IOException {
+        Transport paczkomat = new Transport();
+        paczkomat.setName("InPost");
+        paczkomat.setPrice(10);
+        transportSet.add(paczkomat);
+
+        Transport kurier = new Transport();
+        kurier.setPrice(15);
+        kurier.setName("DHL");
+transportSet.add(kurier);
+
         Graphic geForce = new Graphic();
         geForce.setPrice(1500);
         geForce.setName("GTX1060");
@@ -373,6 +395,122 @@ String CNot = "background-color:Tomato;";
         }
         set.remove(tempEmp);
         return new ModelAndView("redirect:/viewSetList");
+    }
+
+    @RequestMapping(value = "/addDelivery", method = RequestMethod.POST)
+    public ModelAndView addDelivery(@RequestParam(value = "transport") String transport) {
+Customer customer = new Customer();
+customer = customerList.get(localID);
+Transport temp = null;
+for (Transport transport1 : transportSet){
+    if(transport1.getName().equals(transport)){
+        temp=transport1;
+    }
+}
+        customer.setTransport1(temp);
+customer.setTransport(temp.getName());
+        System.out.println(customer);
+        localListID = customer.getId();
+        customerList.add(customer);
+        customerService.save(customer);
+        localID=customer.getId();
+
+        return new ModelAndView("redirect:/Pay");
+    }
+
+
+
+    @RequestMapping(value = "/viewDelivery")
+    public String viewDelivery(Model model) {
+
+        model.addAttribute("transport",transportSet);
+
+        return "addDelivery";
+    }
+
+
+    @RequestMapping(value = "/addCustomerName", method = RequestMethod.GET)
+    public String addCustomerName(Model model){
+        model.addAttribute("customer", new Customer());
+        model.addAttribute("transport",transportSet);
+            return "addCustomer";
+        }
+
+    @PostMapping(value = "/addCustomer")
+    public String addCustomer(Model model, @ModelAttribute @Valid Customer customer, BindingResult result){
+        if (result.hasErrors()) {
+            System.out.println("is error");
+            System.out.println(customer);
+            return "redirect:/addCustomerName";
+        }
+
+        else{
+             {
+
+            customer.setSet(set);
+            customerList.add(customer);
+//            customerService.save(customer);
+                 localID = customer.getId();
+
+        }}
+        return "redirect:/viewDelivery";
+    }
+    @RequestMapping(value = "/Pay")
+    public String Pay(Model model){
+
+        System.out.println(customerService.getOne(localID));
+        System.out.println("test");
+        System.out.println(customerService.getSet(localID));
+        System.out.println("test2");
+        System.out.println(customerList);
+        model.addAttribute("customer",customerService.getOne(localID));
+        model.addAttribute("order",set);
+        int transport = customerList.get(localListID).getTransport1().getPrice();
+        total =0;
+        System.out.println(set);
+        for (PeCet price:set
+        ) {
+
+            total=price.getPrice()+total;
+
+        }
+        int totalSum = total+transport;
+        model.addAttribute("total",total);
+        model.addAttribute("deliveryCost",transport);
+        model.addAttribute("totalSum",totalSum);
+
+        return "payment";
+    }
+    @RequestMapping(value = "/Fianl")
+    public String Final(Model model){
+
+        int transport = customerList.get(localListID).getTransport1().getPrice();
+        total =0;
+        for (PeCet price:set
+        ) {
+
+            total=price.getPrice()+total;
+
+        }
+        int totalSum = total+transport;
+        StringBuilder str1 = new StringBuilder();
+        str1.append(totalSum);
+        str1.append(" PLN");
+        StringBuilder str2 = new StringBuilder();
+        str2.append("Number od order: ");
+        str2.append(localID);
+
+
+        model.addAttribute("totalSum",str1);
+        model.addAttribute("idOrder",str2);
+        return "final";
+    }
+
+    @RequestMapping("/newOrder")
+    public String newOrder(){
+        customerList.clear();
+        set.clear();
+        return "main";
     }
 
     public Set<Graphic> getGraphicList() {
