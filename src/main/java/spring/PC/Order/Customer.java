@@ -64,7 +64,7 @@ private int totalPrice;
                 ", adress='" + adress + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone=" + telephone +
-                ", set=" +  ", transport=" + transport+
+                ", set=" +  ", transport=" + transport+ " totalPrice: " + totalPrice +
                 '}';
     }
 }
