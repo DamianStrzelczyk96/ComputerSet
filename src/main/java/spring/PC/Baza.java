@@ -671,6 +671,7 @@ customer.setTransport(temp.getName());
 
         }
         int totalSum = total+transport;
+
         customer.setTotalPrice(totalSum);
 localID = customer.getId();
 
@@ -694,8 +695,8 @@ Customer customer = new Customer();
         customerService.save(customer);
         localID = customer.getId();
 
-//        int totalSum = customer.getTotalPrice();
-        int totalSum = 1000;
+        int totalSum = customer.getTotalPrice();
+
         StringBuilder str1 = new StringBuilder();
         str1.append(totalSum);
         str1.append(" PLN");

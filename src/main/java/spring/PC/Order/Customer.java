@@ -34,7 +34,8 @@ public class Customer {
     @NotEmpty
     private String email;
  private String transport;
-private int TotalPrice;
+    @EqualsAndHashCode.Exclude
+private int totalPrice;
 
   private transient Transport transport1;
 
@@ -45,6 +46,14 @@ private int TotalPrice;
 //    @EqualsAndHashCode.Exclude
 //    private List<PeCet> set;
 
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     @Override
     public String toString() {
