@@ -35,6 +35,7 @@ public class Customer {
     private String email;
  private String transport;
 
+ private int totalPrice;
 
   private transient Transport transport1;
 
