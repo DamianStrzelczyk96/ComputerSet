@@ -41,10 +41,6 @@ private int totalPrice;
 
 
     private int telephone;
-//    @OneToMany(mappedBy = "customer")
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
-//    private List<PeCet> set;
 
 
     public int getTotalPrice() {
