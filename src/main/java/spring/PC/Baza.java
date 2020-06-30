@@ -672,7 +672,7 @@ customer.setTransport(temp.getName());
         }
         int totalSum = total+transport;
 
-        customer.setTotalPrice(totalSum);
+
 localID = customer.getId();
 
         model.addAttribute("customer",customer);
@@ -686,18 +686,32 @@ localID = customer.getId();
     @RequestMapping(value = "/Fianl")
     public String Final(Model model){
 Customer customer = new Customer();
+        int transport = 0;
         for (Customer cust:customerList
         ) {if(cust.getId() == localID){
             customer = cust;
+            transport = cust.getTransport1().getPrice();
         }
 
         }
+
+        total =0;
+        System.out.println("finall custoemr");
+        System.out.println(customer);
+        for (PeCet price:set
+        ) {
+
+            total=price.getPrice()+total;
+
+        }
+        int totalSum = total+transport;
+
+
         customerService.save(customer);
         System.out.println(customer);
         System.out.println(customerService.getAll());
         localID = customer.getId();
 
-        int totalSum = customer.getTotalPrice();
 
         StringBuilder str1 = new StringBuilder();
         str1.append(totalSum);
