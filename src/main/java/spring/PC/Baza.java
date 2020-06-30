@@ -692,7 +692,7 @@ Customer customer = new Customer();
         }
 
         }
-        customerService.save(customer);
+//        customerService.save(customer);
         localID = customer.getId();
 
         int totalSum = customer.getTotalPrice();
