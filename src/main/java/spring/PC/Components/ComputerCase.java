@@ -27,7 +27,7 @@ public class ComputerCase extends PeCet{
     @Lob
     ImageIcon photo;
     @EqualsAndHashCode.Exclude
-    public  int customerID;
+    public  int customerID = 0;
     public int getPrice() {
         return price;
     }
