@@ -2,6 +2,7 @@ package spring.PC.Components;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -24,7 +25,8 @@ public class Cooler extends PeCet {
     @Column
     @Lob
     private ImageIcon photo;
-
+    @EqualsAndHashCode.Exclude
+    public  int customerID;
  /*   public int getPrice() {
         return price;
     }
