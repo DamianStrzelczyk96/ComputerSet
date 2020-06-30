@@ -694,7 +694,8 @@ Customer customer = new Customer();
         customerService.save(customer);
         localID = customer.getId();
 
-        int totalSum = customer.getTotalPrice();
+//        int totalSum = customer.getTotalPrice();
+        int totalSum = 1000;
         StringBuilder str1 = new StringBuilder();
         str1.append(totalSum);
         str1.append(" PLN");

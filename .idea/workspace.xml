@@ -3,19 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c83c750f-f9e2-4167-897c-4c5193710b18" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/ComputerCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/ComputerCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Cooler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Cooler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Graphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Graphic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/MemoryDisc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/MemoryDisc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/MotherBord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/MotherBord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/PeCet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/PeCet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/PowerSupply.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/PowerSupply.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Procesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Procesor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Ram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Components/Ram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/spring/service/PeCetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/service/PeCetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/Cooler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/Cooler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/Ram.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/Ram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/spring/PC/Baza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/spring/PC/Baza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/ComputerCase.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/ComputerCase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/Graphic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/Graphic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/MemoryDisc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/MemoryDisc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/MotherBord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/MotherBord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/PowerSupply.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/PowerSupply.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/spring/PC/Components/Procesor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/spring/PC/Components/Procesor.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +169,7 @@
       <workItem from="1591885592989" duration="1869000" />
       <workItem from="1592216383782" duration="10858000" />
       <workItem from="1592297277482" duration="12624000" />
-      <workItem from="1592474761347" duration="124422000" />
+      <workItem from="1592474761347" duration="125288000" />
     </task>
     <task id="LOCAL-00001" summary="Confing on heroku database">
       <created>1592745256197</created>
@@ -296,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593538861722</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Final project config 6">
+      <created>1593539628709</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1593539628709</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +320,8 @@
     <MESSAGE value="Final project config 3" />
     <MESSAGE value="Final project config 4" />
     <MESSAGE value="Final project config 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final project config 5" />
+    <MESSAGE value="Final project config 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final project config 6" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="70" key="#Assign_Data_Sources" timestamp="1592335838725">
@@ -362,10 +364,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1593420622640" />
-    <state x="317" y="6" key="CommitChangelistDialog2" timestamp="1593538860908">
+    <state x="317" y="6" key="CommitChangelistDialog2" timestamp="1593539627818">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="317" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593538860908" />
+    <state x="317" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1593539627818" />
     <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1593421627857">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -422,10 +424,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1590660242358" />
-    <state x="485" y="157" key="Vcs.Push.Dialog.v2" timestamp="1593538863116">
+    <state x="485" y="157" key="Vcs.Push.Dialog.v2" timestamp="1593539630649">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="485" y="157" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593538863116" />
+    <state x="485" y="157" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1593539630649" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1590660361424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
