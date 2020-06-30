@@ -26,4 +26,5 @@ public void delete(){repository.deleteAll();}
 
         return repository.findAll().stream().collect(Collectors.toSet());
     }
+
 }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>AdminLogin</title>
+</head>
+<body style="background-color:rgb(255, 255, 255);">
+
+<div class="container">
+    <h2>ADMIN LOGIN</h2>
+    <div class="form-group">
+        <form action="#" th:action="@{/adminLogin}" th:object="${admin}" method="post">
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <input type="text" class="form-control" th:field="*{name}" placeholder="Name" required><br>
+
+            <p class="text-danger mb-10" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+            <input type="text" class="form-control" th:field="*{password}" placeholder="password" required><br>
+
+            <input type="submit" th:value="Login" class="btn btn-danger">
+        </form>
+        <hr>
+    </div>
+    <a href="/index" class="btn btn-info" role="button">Main Menu</a>
+</div>
+
+</body>
+</html>

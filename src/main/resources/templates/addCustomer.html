@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" type="text/css">
     <title>AddCustomer</title>
 </head>
-<body>
+<body style="background-color:rgba(66, 100, 124, 0.8);">
 <hr>
 <div class="container">
     <h2>Give Informations</h2>
@@ -28,8 +28,9 @@
             <p class="text-danger mb-10" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
             <input type="email" class="form-control" th:field="*{email}" placeholder="Email" required><br>
 
+            <label>TELEPHONE NUMBER</label>
             <p class="text-danger mb-10" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></p>
-            <input type="text" class="form-control" th:field="*{telephone}" placeholder="Telephone"><br>
+            <input type="number" class="form-control" th:field="*{telephone}" placeholder="Telephone" required><br>
 
 
             <input type="submit" th:value="Save" class="btn btn-danger">

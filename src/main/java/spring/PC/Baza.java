@@ -7,11 +7,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import spring.PC.Components.*;
+import spring.PC.Order.Admin;
 import spring.PC.Order.Customer;
 import spring.PC.Order.Transport;
 import spring.service.*;
 
 import javax.imageio.ImageIO;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.swing.*;
 import javax.validation.Valid;
 import java.awt.image.BufferedImage;
@@ -26,6 +28,9 @@ import java.util.Set;
 public class Baza extends JPanel{
     int localID;
     int localListID;
+    String localName;
+    private final ComputerService computerService;
+    private final PeCetService peCetService;
     private final CustomerService customerService;
     private final GraphicService graphicService;
     private final ComputerCaseService computerCaseService;
@@ -48,6 +53,8 @@ public class Baza extends JPanel{
     Graphic geForce = new Graphic();
     List<Customer>customerList = new ArrayList<>();
     Set<Transport>transportSet = new HashSet<>();
+    List<PeCet>peCetList = new ArrayList<>();
+    Set<SetSugestion>setSugestions = new HashSet<>();
 String Ok="Yes";
 String Not="No";
 String COk ="background-color:DodgerBlue;";
@@ -63,6 +70,31 @@ String CNot = "background-color:Tomato;";
         return "main";
 }
 
+    @RequestMapping("/addDetalis")
+    public String addDetalis(){
+        SetSugestion Gaming = new SetSugestion();
+        Gaming.setName("gaming");
+        Gaming.setPrice(10000);
+        setSugestions.add(Gaming);
+
+        SetSugestion Prgraming = new SetSugestion();
+        Prgraming.setPrice(4700);
+        Prgraming.setName("programing");
+        setSugestions.add(Prgraming);
+
+        Transport paczkomat = new Transport();
+        paczkomat.setName("InPost");
+        paczkomat.setPrice(10);
+        transportSet.add(paczkomat);
+
+        Transport kurier = new Transport();
+        kurier.setPrice(15);
+        kurier.setName("DHL");
+        transportSet.add(kurier);
+
+        return "adminPanel";
+    }
+
     @RequestMapping("/deleteRepository")
     public String deleteRepository(){
         transportSet.clear();
@@ -74,83 +106,147 @@ String CNot = "background-color:Tomato;";
         powerSupplyService.delete();
         procesorService.delete();
         ramService.delete();
-        return "main";
+        setSugestions.clear();
+        return "adminPanel";
     }
 
-    @RequestMapping("/addRepository")
-    public String addRepository() throws IOException {
-        Transport paczkomat = new Transport();
-        paczkomat.setName("InPost");
-        paczkomat.setPrice(10);
-        transportSet.add(paczkomat);
-
-        Transport kurier = new Transport();
-        kurier.setPrice(15);
-        kurier.setName("DHL");
-transportSet.add(kurier);
-
-        Graphic geForce = new Graphic();
-        geForce.setPrice(1500);
-        geForce.setName("GTX1060");
-        geForce.setItem(0);
-//        listGraphic.add(geForce);
-        geForce.setPhotoLink("images/Karta.jpg");
-//        Image img = ImageIO.read(new URL("https://s12emagst.akamaized.net/products/24710/24709875/images/res_9c6f995918fa4fdfe0a9405da95c3800_full.jpg"));
-//        ImageIcon photo = new ImageIcon(img);
-//        geForce.setPhoto(photo);
-        graphicService.save(geForce);
-
-        Procesor intel = new Procesor();
-        intel.setName("i5");
-        intel.setPrice(500);
-        intel.setItem(2);
-        intel.setPhotoLink("images/Intel-i5-9400F.jpg");
-        procesorService.save(intel);
-
-        ComputerCase silentium = new ComputerCase();
-        silentium.setName("Silentiumpc Signum Sg1v Evo Tg");
-        silentium.setPrice(250);
-        silentium.setItem(3);
-        silentium.setPhotoLink("images/Silentiumpc-signum-sg1v-evo-tg.jpg");
-        computerCaseService.save(silentium);
-
-        Ram RamHyperXFury = new Ram();
-        RamHyperXFury.setName("HyperX Predator DDR4 8GB 3200MHz");
-        RamHyperXFury.setPrice(250);
-        RamHyperXFury.setItem(4);
-        RamHyperXFury.setPhotoLink("images/HyperX-Predator-DDR4-8GB-3200MHz.jpg");
-        ramService.save(RamHyperXFury);
-
-        MotherBord AsusRogStrix = new MotherBord();
-        AsusRogStrix.setName("Asus Rog Strix b450 f gaming");
-        AsusRogStrix.setItem(5);
-        AsusRogStrix.setPrice(750);
-        AsusRogStrix.setPhotoLink("images/Asus-Rog-Strix-b450-f-gaming.jpg");
-        motherBoardService.save(AsusRogStrix);
-
-        MemoryDisc KingstonSSD = new MemoryDisc();
-        KingstonSSD.setName("Kingston KC600 512GB SSD");
-        KingstonSSD.setItem(6);
-        KingstonSSD.setPrice(360);
-        KingstonSSD.setPhotoLink("images/Kingston-KC600-512GB-SSD.jpg");
-        memoryDiscService.save(KingstonSSD);
-
-        Cooler BeQuietDark = new Cooler();
-        BeQuietDark.setItem(7);
-        BeQuietDark.setName("BE QUIET! Dark Rock PRO 4");
-        BeQuietDark.setPhotoLink("images/BE-QUIET!-Dark-Rock-PRO-4.jpg");
-        BeQuietDark.setPrice(350);
-        coolerService.save(BeQuietDark);
-
-        PowerSupply BeQuietPower = new PowerSupply();
-        BeQuietPower.setItem(8);
-        BeQuietPower.setName("Be Quiet Pure Power 11 600W");
-        BeQuietPower.setPhotoLink("images/Be-Quiet-Pure-Power-11-600W.jpg");
-        BeQuietPower.setPrice(450);
-        powerSupplyService.save(BeQuietPower);
-
-        return "main";
-    }
+//    @RequestMapping("/addRepository")
+//    public String addRepository() throws IOException {
+//
+//        SetSugestion Gaming = new SetSugestion();
+//        Gaming.setName("gaming");
+//        Gaming.setPrice(10000);
+//        setSugestions.add(Gaming);
+//
+//        Transport paczkomat = new Transport();
+//        paczkomat.setName("InPost");
+//        paczkomat.setPrice(10);
+//        transportSet.add(paczkomat);
+//
+//        Transport kurier = new Transport();
+//        kurier.setPrice(15);
+//        kurier.setName("DHL");
+//transportSet.add(kurier);
+//
+//        Graphic geForce = new Graphic();
+//        geForce.setPrice(1500);
+//        geForce.setName("GTX1060");
+//        geForce.setItem(0);
+////        listGraphic.add(geForce);
+//        geForce.setPhotoLink("images/Karta.jpg");
+////        Image img = ImageIO.read(new URL("https://s12emagst.akamaized.net/products/24710/24709875/images/res_9c6f995918fa4fdfe0a9405da95c3800_full.jpg"));
+////        ImageIcon photo = new ImageIcon(img);
+////        geForce.setPhoto(photo);
+//        graphicService.save(geForce);
+//
+//        Graphic RTX2080 = new Graphic();
+//        RTX2080.setPrice(3600);
+//        RTX2080.setItem(0);
+//        RTX2080.setName("RTX2080 SUPER");
+//        RTX2080.setPhotoLink("images/RTX2080SUPER.jpg");
+//        graphicService.save(RTX2080);
+//
+//        Procesor intel = new Procesor();
+//        intel.setName("i5");
+//        intel.setPrice(500);
+//        intel.setItem(2);
+//        intel.setPhotoLink("images/Intel-i5-9400F.jpg");
+//        procesorService.save(intel);
+//
+//        Procesor intelI79700K = new Procesor();
+//        intelI79700K.setItem(2);
+//        intelI79700K.setPrice(1800);
+//        intelI79700K.setName("Intel i7 9700K 3.6GHz 12MB");
+//        intelI79700K.setPhotoLink("images/Intel-i7-9700K-3.6GHz-12MB.jpg");
+//        procesorService.save(intelI79700K);
+//
+//        ComputerCase silentium = new ComputerCase();
+//        silentium.setName("Silentiumpc Signum Sg1v Evo Tg");
+//        silentium.setPrice(250);
+//        silentium.setItem(3);
+//        silentium.setPhotoLink("images/Silentiumpc-signum-sg1v-evo-tg.jpg");
+//        computerCaseService.save(silentium);
+//
+//        ComputerCase BeQuietSilentBase601 = new ComputerCase();
+//        BeQuietSilentBase601.setPhotoLink("images/Be-Quiet!-Silent-Base-601.jpg");
+//        BeQuietSilentBase601.setItem(3);
+//        BeQuietSilentBase601.setPrice(550);
+//        BeQuietSilentBase601.setName("Be Quiet! Silent Base 601");
+//        computerCaseService.save(BeQuietSilentBase601);
+//
+//
+//        Ram RamHyperXFury = new Ram();
+//        RamHyperXFury.setName("HyperX Predator DDR4 8GB 3200MHz");
+//        RamHyperXFury.setPrice(250);
+//        RamHyperXFury.setItem(4);
+//        RamHyperXFury.setPhotoLink("images/HyperX-Predator-DDR4-8GB-3200MHz.jpg");
+//        ramService.save(RamHyperXFury);
+//
+//        Ram Inno3D16GB = new Ram();
+//        Inno3D16GB.setItem(4);
+//        Inno3D16GB.setName("Inno3D 16GB 3600MHz iCHILL RGB CL17");
+//        Inno3D16GB.setPhotoLink("images/Inno3D-16GB-3600MHz.jpg");
+//        Inno3D16GB.setPrice(1000);
+//        ramService.save(Inno3D16GB);
+//
+//        MotherBord AsusRogStrix = new MotherBord();
+//        AsusRogStrix.setName("Asus Rog Strix b450 f gaming");
+//        AsusRogStrix.setItem(5);
+//        AsusRogStrix.setPrice(750);
+//        AsusRogStrix.setPhotoLink("images/Asus-Rog-Strix-b450-f-gaming.jpg");
+//        motherBoardService.save(AsusRogStrix);
+//
+//        MotherBord GigabyteZ390 = new MotherBord();
+//        GigabyteZ390.setPrice(1000);
+//        GigabyteZ390.setItem(5);
+//        GigabyteZ390.setName("Gigabyte Z390 Aorus pro");
+//        GigabyteZ390.setPhotoLink("images/Gigabyte-Z390-Aorus-pro.jpg");
+//        motherBoardService.save(GigabyteZ390);
+//
+//
+//        MemoryDisc KingstonSSD = new MemoryDisc();
+//        KingstonSSD.setName("Kingston KC600 512GB SSD");
+//        KingstonSSD.setItem(6);
+//        KingstonSSD.setPrice(360);
+//        KingstonSSD.setPhotoLink("images/Kingston-KC600-512GB-SSD.jpg");
+//        memoryDiscService.save(KingstonSSD);
+//
+//        MemoryDisc AdataSSD512GB = new MemoryDisc();
+//        AdataSSD512GB.setPhotoLink("images/Adata-ssd-512GB.jpg");
+//        AdataSSD512GB.setPrice(600);
+//        AdataSSD512GB.setItem(6);
+//        AdataSSD512GB.setName("Adata SU900 SSD 512GB");
+//        memoryDiscService.save(AdataSSD512GB);
+//
+//        Cooler BeQuietDark = new Cooler();
+//        BeQuietDark.setItem(7);
+//        BeQuietDark.setName("BE QUIET! Dark Rock PRO 4");
+//        BeQuietDark.setPhotoLink("images/BE-QUIET!-Dark-Rock-PRO-4.jpg");
+//        BeQuietDark.setPrice(350);
+//        coolerService.save(BeQuietDark);
+//
+//        Cooler SilentLoop360 = new Cooler();
+//        SilentLoop360.setPrice(700);
+//        SilentLoop360.setPhotoLink("images/Silent-Loop-360mm.jpg");
+//        SilentLoop360.setName("BE Quiet! Silent Loop 360mm");
+//        SilentLoop360.setItem(7);
+//        coolerService.save(SilentLoop360);
+//
+//        PowerSupply BeQuietPower = new PowerSupply();
+//        BeQuietPower.setItem(8);
+//        BeQuietPower.setName("Be Quiet Pure Power 11 600W");
+//        BeQuietPower.setPhotoLink("images/Be-Quiet-Pure-Power-11-600W.jpg");
+//        BeQuietPower.setPrice(450);
+//        powerSupplyService.save(BeQuietPower);
+//
+//        PowerSupply BeQuietStraightPower11 = new PowerSupply();
+//        BeQuietStraightPower11.setPrice(550);
+//        BeQuietStraightPower11.setPhotoLink("images/Be-Quiet!-Straight-Power-11-650W.jpg");
+//        BeQuietStraightPower11.setItem(8);
+//        BeQuietStraightPower11.setName("Be Quiet! Straight Power11 650W");
+//        powerSupplyService.save(BeQuietStraightPower11);
+//        return "adminPanel";
+//    }
 
 
     @RequestMapping("/viewComponets")
@@ -195,6 +291,51 @@ transportSet.add(kurier);
         }}
 
         return "addComponent";
+    }
+
+    @RequestMapping("/viewSetSugestion")
+    public String viewSetSugestion(Model model){
+        model.addAttribute ("list",setSugestions);
+
+        return "setSugesstion";
+    }
+
+    @PostMapping(value = "/save_set")
+    public String saveCar(Model model, @ModelAttribute(value = "setSugestion") String name){
+        listGraphic = getGraphicList();
+        listComputerCase = getComputerCaseList();
+        listRam = getRamList();
+        listCooler = getListCooler();
+        listMotherBoard = getMotherBoardList();
+        listPowerSupply = getListPowerSupply();
+        listProcessor = getListProcesor();
+        listMemoryDisc = getListMemoryDisc();
+
+        if (name.equals("gaming")){
+
+            add("RTX2080 SUPER");
+            addComputerCase("Be Quiet! Silent Base 601");
+            addProcesor("Intel i7 9700K 3.6GHz 12MB");
+            addCooler("BE Quiet! Silent Loop 360mm");
+            addMemoryDisc("Adata SU900 SSD 512GB");
+            addMotherBoard("Gigabyte Z390 Aorus pro");
+            addPowerSupply("Be Quiet! Straight Power11 650W");
+            addRam("Inno3D 16GB 3600MHz iCHILL RGB CL17");
+        }
+        if (name.equals("programing")){
+
+            add("MSI Radeon RX 5700 GAMING X 8GB GDDR6");
+            addProcesor("AMD Ryzen 5 3600");
+            addComputerCase("SilentiumPC Regnum RG6V TG Pure Black");
+            addPowerSupply("SilentiumPC Supremo L2 650W 80 Plus Gold");
+            addRam("HyperX 16GB (2x8GB) 2666MHz CL16 Fury");
+            addMotherBoard("ASRock Fatal1ty B450 Gaming K4");
+            addCooler("SilentiumPC Spartan 4 Max 120mm");
+            addMemoryDisc("Kingston KC600 512GB SSD");
+        }
+
+
+        return "redirect:/viewSetList";
     }
 
     @RequestMapping("/viewGraphic")
@@ -257,6 +398,13 @@ transportSet.add(kurier);
         model.addAttribute("dodaj","/dodajPowerSupply");
 
         return "listComputerCase";
+    }
+
+    @RequestMapping("/clearSet")
+    public String clearSet(Model model) {
+        set.clear();
+
+        return "redirect:/viewSetList";
     }
 
     @RequestMapping(value = "/index")
@@ -400,7 +548,12 @@ transportSet.add(kurier);
     @RequestMapping(value = "/addDelivery", method = RequestMethod.POST)
     public ModelAndView addDelivery(@RequestParam(value = "transport") String transport) {
 Customer customer = new Customer();
-customer = customerList.get(localID);
+        for (Customer cust:customerList
+        ) {if(cust.getId() == localID){
+            customer = cust;
+        }};
+        System.out.println("delivery");
+        System.out.println(customer);
 Transport temp = null;
 for (Transport transport1 : transportSet){
     if(transport1.getName().equals(transport)){
@@ -409,10 +562,7 @@ for (Transport transport1 : transportSet){
 }
         customer.setTransport1(temp);
 customer.setTransport(temp.getName());
-        System.out.println(customer);
-        localListID = customer.getId();
-        customerList.add(customer);
-        customerService.save(customer);
+        customerList.add(localID,customer);
         localID=customer.getId();
 
         return new ModelAndView("redirect:/Pay");
@@ -440,17 +590,18 @@ customer.setTransport(temp.getName());
     public String addCustomer(Model model, @ModelAttribute @Valid Customer customer, BindingResult result){
         if (result.hasErrors()) {
             System.out.println("is error");
-            System.out.println(customer);
             return "redirect:/addCustomerName";
         }
 
         else{
              {
-
-            customer.setSet(set);
+                 System.out.println(customer);
+                 System.out.println("customer add");
+                 System.out.println(customer.getId());
             customerList.add(customer);
-//            customerService.save(customer);
                  localID = customer.getId();
+                 System.out.println(customer.getId());
+                 localName = customer.getName();
 
         }}
         return "redirect:/viewDelivery";
@@ -458,16 +609,22 @@ customer.setTransport(temp.getName());
     @RequestMapping(value = "/Pay")
     public String Pay(Model model){
 
-        System.out.println(customerService.getOne(localID));
-        System.out.println("test");
-        System.out.println(customerService.getSet(localID));
-        System.out.println("test2");
-        System.out.println(customerList);
-        model.addAttribute("customer",customerService.getOne(localID));
-        model.addAttribute("order",set);
-        int transport = customerList.get(localListID).getTransport1().getPrice();
+        Customer customer = new Customer();
+
+
+
+        int transport = 0;
+        for (Customer cust:customerList
+             ) {if(cust.getId() == localID){
+                 customer = cust;
+                 transport = cust.getTransport1().getPrice();
+        }
+
+        }
+
         total =0;
-        System.out.println(set);
+        System.out.println("finall custoemr");
+        System.out.println(customer);
         for (PeCet price:set
         ) {
 
@@ -475,6 +632,11 @@ customer.setTransport(temp.getName());
 
         }
         int totalSum = total+transport;
+        customer.setTotalPrice(totalSum);
+localID = customer.getId();
+
+        model.addAttribute("customer",customer);
+        model.addAttribute("order",set);
         model.addAttribute("total",total);
         model.addAttribute("deliveryCost",transport);
         model.addAttribute("totalSum",totalSum);
@@ -483,26 +645,36 @@ customer.setTransport(temp.getName());
     }
     @RequestMapping(value = "/Fianl")
     public String Final(Model model){
-
-        int transport = customerList.get(localListID).getTransport1().getPrice();
-        total =0;
-        for (PeCet price:set
-        ) {
-
-            total=price.getPrice()+total;
+Customer customer = new Customer();
+        for (Customer cust:customerList
+        ) {if(cust.getId() == localID){
+            customer = cust;
+        }
 
         }
-        int totalSum = total+transport;
+        customerService.save(customer);
+        localID = customer.getId();
+
+        int totalSum = customer.getTotalPrice();
         StringBuilder str1 = new StringBuilder();
         str1.append(totalSum);
         str1.append(" PLN");
         StringBuilder str2 = new StringBuilder();
-        str2.append("Number od order: ");
+        str2.append("Number of order: ");
         str2.append(localID);
 
 
         model.addAttribute("totalSum",str1);
         model.addAttribute("idOrder",str2);
+
+        for (PeCet pecet:set
+             ) {
+
+            computerService.save(pecet,localID,localName);
+        }
+        System.out.println(computerService.getAll());
+        customerList.clear();
+        set.clear();
         return "final";
     }
 
@@ -534,4 +706,25 @@ customer.setTransport(temp.getName());
     public Set<PowerSupply> getListPowerSupply() { return powerSupplyService.getAll();}
     public Set<Procesor> getListProcesor() { return procesorService.getAll(); }
 
+
+    @RequestMapping(value = "/addAdmin", method = RequestMethod.GET)
+    public String addAdmin(Model model){
+        model.addAttribute("admin", new Admin());
+        return "adminLogin";
+    }
+    @PostMapping(value = "/adminLogin")
+    public String adminLogin(Model model, @ModelAttribute @Valid Admin admin, BindingResult result){
+        if (result.hasErrors()) {
+            System.out.println("is error");
+            return "redirect:/addAdmin";
+        }
+
+        if(admin.getName().equals("admin")&&admin.getPassword().equals("admin")){
+            return "adminPanel";
+
+
+
+    }
+        return "redirect:/addAdmin";
+    }
 }

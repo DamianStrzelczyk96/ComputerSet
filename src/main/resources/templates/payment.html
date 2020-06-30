@@ -2,6 +2,9 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Payment</title>
     <style>
         table {
@@ -12,7 +15,7 @@
             border-collapse: collapse;
         }
         th, td {
-            padding: 15px;
+            padding: 20px;
             text-align: left;
         }
         #t01 tr:nth-child(even) {
@@ -27,9 +30,11 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color:rgba(66, 100, 124, 0.8);">
+<div class= "text-center">
 <h1>CHECK YOUR ORDER</h1>
-<h2>Styling Tables</h2>
+</div>
+<h2>CUSTOMER INFORMATIONS</h2>
 
 <table>
     <tr>
@@ -48,11 +53,11 @@
         <td th:text="${geForce.telephone}"></td>
         <td th:text="${geForce.transport}"></td>
     </tr>
-</table>
+</table><br>
 <a href="/addCustomerName"class="btn btn-success" role="button">Corect Your informations</a><br><br>
 <a href="/viewSetList"class="btn btn-primary" role="button">Change Your set</a><br><br>
 <br>
-
+<h2>CUSTOMER ORDER</h2>
 <table id="t01">
     <tr>
         <th>Name</th>
@@ -79,7 +84,9 @@
         <td style="font-size:30px;" th:text =        TOTAL></td>
         <td style="background-color:rgb(10, 250, 10)" style="font-size:30px" th:text = "${totalSum}"></td>
     </tr>
-</table>
+</table><br>
+<div class= "text-center">
 <a href="/Fianl"class="btn btn-success" role="button">PAY</a><br><br>
+</div>
 </body>
 </html>

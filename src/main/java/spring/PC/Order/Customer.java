@@ -34,16 +34,16 @@ public class Customer {
     @NotEmpty
     private String email;
  private String transport;
-
+private int TotalPrice;
 
   private transient Transport transport1;
 
 
     private int telephone;
-    @OneToMany(mappedBy = "customer")
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    private List<PeCet> set;
+//    @OneToMany(mappedBy = "customer")
+//    @ToString.Exclude
+//    @EqualsAndHashCode.Exclude
+//    private List<PeCet> set;
 
 
     @Override
@@ -55,7 +55,7 @@ public class Customer {
                 ", adress='" + adress + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone=" + telephone +
-                ", set=" + set + ", transport=" + transport+
+                ", set=" +  ", transport=" + transport+
                 '}';
     }
 }

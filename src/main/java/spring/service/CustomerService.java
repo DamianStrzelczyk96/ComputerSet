@@ -22,12 +22,13 @@ public class CustomerService {
     public void save(final Customer customer) {
         repository.save(customer);
     }
+
     public Customer getOne(int id){
         return repository.getOne(id);
     }
-    public List getSet(int id){
-        return repository.getOne(id).getSet();
-    }
+//    public List getSet(int id){
+//        return repository.getOne(id).getSet();
+//    }
 
     public List<Customer> getAll() {
         return repository.findAll().stream().collect(Collectors.toList());
