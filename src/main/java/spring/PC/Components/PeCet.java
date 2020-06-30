@@ -14,8 +14,7 @@ public class PeCet {
     @Id
     @GeneratedValue
     private int id;
-    @EqualsAndHashCode.Exclude
-  public  int customerID;
+
     //TODO nazwa zestawu
     @EqualsAndHashCode.Exclude
    public int price;

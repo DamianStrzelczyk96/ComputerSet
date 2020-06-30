@@ -20,8 +20,7 @@ public class Procesor extends PeCet {
     @Column
     @Lob
     ImageIcon photo;
-    @EqualsAndHashCode.Exclude
-    public  int customerID = 0;
+
     public String getName() {
         return name;
     }

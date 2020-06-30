@@ -19,10 +19,6 @@ public class PeCetService {
     private final PeCetRepository repository;
     public void delete(){repository.deleteAll();}
 
-    public void save(final PeCet peCet, int id) {
-        repository.save(peCet);
-        peCet.setCustomerID(id);
-    }
 
     public List<PeCet> getAll() {
 

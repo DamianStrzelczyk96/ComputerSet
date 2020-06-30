@@ -25,8 +25,7 @@ public class Cooler extends PeCet {
     @Column
     @Lob
     private ImageIcon photo;
-    @EqualsAndHashCode.Exclude
-    public  int customerID = 0;
+
  /*   public int getPrice() {
         return price;
     }

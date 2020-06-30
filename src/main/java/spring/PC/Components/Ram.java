@@ -24,8 +24,7 @@ public class Ram extends PeCet {
     @Column
     @Lob
     ImageIcon photo;
-    @EqualsAndHashCode.Exclude
-    public  int customerID = 0;
+
     public int getPrice() {
         return price;
     }
