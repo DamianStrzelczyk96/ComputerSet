@@ -70,36 +70,35 @@ String CNot = "background-color:Tomato;";
         return "main";
 }
 
-    @RequestMapping("/addDetalis")
-    public String addDetalis(){
-        SetSugestion Gaming = new SetSugestion();
-        Gaming.setName("gaming");
-        Gaming.setPrice(10000);
-        setSugestions.add(Gaming);
-
-        SetSugestion Prgraming = new SetSugestion();
-        Prgraming.setPrice(4700);
-        Prgraming.setName("programing");
-        setSugestions.add(Prgraming);
-
-        Transport paczkomat = new Transport();
-        paczkomat.setName("InPost");
-        paczkomat.setPrice(10);
-        transportSet.add(paczkomat);
-
-        Transport kurier = new Transport();
-        kurier.setPrice(15);
-        kurier.setName("DHL");
-        transportSet.add(kurier);
-
-        return "adminPanel";
-    }
+//    @RequestMapping("/addDetalis")
+//    public String addDetalis(){
+//        SetSugestion Gaming = new SetSugestion();
+//        Gaming.setName("gaming");
+//        Gaming.setPrice(10000);
+//        setSugestions.add(Gaming);
+//
+//        SetSugestion Prgraming = new SetSugestion();
+//        Prgraming.setPrice(4700);
+//        Prgraming.setName("programing");
+//        setSugestions.add(Prgraming);
+//
+//        Transport paczkomat = new Transport();
+//        paczkomat.setName("InPost");
+//        paczkomat.setPrice(10);
+//        transportSet.add(paczkomat);
+//
+//        Transport kurier = new Transport();
+//        kurier.setPrice(15);
+//        kurier.setName("DHL");
+//        transportSet.add(kurier);
+//
+//        return "adminPanel";
+//    }
 //test
 
 
     @RequestMapping("/deleteRepository")
     public String deleteRepository(){
-        transportSet.clear();
         graphicService.delete();
         coolerService.delete();
         computerCaseService.delete();
@@ -108,7 +107,6 @@ String CNot = "background-color:Tomato;";
         powerSupplyService.delete();
         procesorService.delete();
         ramService.delete();
-        setSugestions.clear();
         return "adminPanel";
     }
 
@@ -159,6 +157,19 @@ String CNot = "background-color:Tomato;";
 
     @RequestMapping("/viewSetSugestion")
     public String viewSetSugestion(Model model){
+
+        setSugestions.clear();
+
+        SetSugestion Gaming = new SetSugestion();
+        Gaming.setName("gaming");
+        Gaming.setPrice(10000);
+        setSugestions.add(Gaming);
+
+        SetSugestion Prgraming = new SetSugestion();
+        Prgraming.setPrice(4700);
+        Prgraming.setName("programing");
+        setSugestions.add(Prgraming);
+
         model.addAttribute ("list",setSugestions);
 
         return "setSugesstion";
@@ -411,7 +422,19 @@ String CNot = "background-color:Tomato;";
 
     @RequestMapping(value = "/addDelivery", method = RequestMethod.POST)
     public ModelAndView addDelivery(@RequestParam(value = "transport") String transport) {
+        transportSet.clear();
+        Transport paczkomat = new Transport();
+        paczkomat.setName("InPost");
+        paczkomat.setPrice(10);
+        transportSet.add(paczkomat);
+
+        Transport kurier = new Transport();
+        kurier.setPrice(15);
+        kurier.setName("DHL");
+        transportSet.add(kurier);
+
 Customer customer = new Customer();
+
         for (Customer cust:customerList
         ) {if(cust.getId() == localID){
             customer = cust;
@@ -436,7 +459,16 @@ customer.setTransport(temp.getName());
 
     @RequestMapping(value = "/viewDelivery")
     public String viewDelivery(Model model) {
+        transportSet.clear();
+        Transport paczkomat = new Transport();
+        paczkomat.setName("InPost");
+        paczkomat.setPrice(10);
+        transportSet.add(paczkomat);
 
+        Transport kurier = new Transport();
+        kurier.setPrice(15);
+        kurier.setName("DHL");
+        transportSet.add(kurier);
         model.addAttribute("transport",transportSet);
 
         return "addDelivery";
@@ -588,7 +620,7 @@ int totalSum = customer.getTotalPrice();
             return "redirect:/addAdmin";
         }
 
-        if(admin.getName().equals("admin")&&admin.getPassword().equals("admin")){
+        if(admin.getName().equals("admin")&&admin.getPassword().equals("adminadmin")){
             return "adminPanel";
 
 
