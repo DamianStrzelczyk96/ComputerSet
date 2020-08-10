@@ -14,8 +14,6 @@ public class PeCet {
     @Id
     @GeneratedValue
     private int id;
-
-    //TODO nazwa zestawu
     @EqualsAndHashCode.Exclude
    public int price;
     @EqualsAndHashCode.Exclude
@@ -23,13 +21,6 @@ public class PeCet {
   public  int item;
     ImageIcon photo;
    public String photoLink;
-//
-//    @ManyToOne
-//    @JoinColumn
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
-//    @NonNull
-//   public Customer customer;
 
 
 public  String getPhotoLink(){return photoLink;}

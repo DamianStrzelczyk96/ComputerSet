@@ -27,7 +27,6 @@ import java.util.Set;
 @Controller
 public class Baza extends JPanel{
     int localID;
-    int localListID;
     String localName;
     private final ComputerService computerService;
     private final PeCetService peCetService;
@@ -70,33 +69,6 @@ String CNot = "background-color:Tomato;";
         return "main";
 }
 
-//    @RequestMapping("/addDetalis")
-//    public String addDetalis(){
-//        SetSugestion Gaming = new SetSugestion();
-//        Gaming.setName("gaming");
-//        Gaming.setPrice(10000);
-//        setSugestions.add(Gaming);
-//
-//        SetSugestion Prgraming = new SetSugestion();
-//        Prgraming.setPrice(4700);
-//        Prgraming.setName("programing");
-//        setSugestions.add(Prgraming);
-//
-//        Transport paczkomat = new Transport();
-//        paczkomat.setName("InPost");
-//        paczkomat.setPrice(10);
-//        transportSet.add(paczkomat);
-//
-//        Transport kurier = new Transport();
-//        kurier.setPrice(15);
-//        kurier.setName("DHL");
-//        transportSet.add(kurier);
-//
-//        return "adminPanel";
-//    }
-//test
-
-
     @RequestMapping("/deleteRepository")
     public String deleteRepository(){
         graphicService.delete();
@@ -109,7 +81,6 @@ String CNot = "background-color:Tomato;";
         ramService.delete();
         return "adminPanel";
     }
-
 
     @RequestMapping("/viewComponets")
     public String viewComponents(Model model) {
