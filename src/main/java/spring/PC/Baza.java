@@ -565,8 +565,8 @@ content.append(number + ". : " + pecet.getName());
         String contentString = content.toString(); 
 
 
-        EmailSender emailSender = new EmailSender();
-        emailSender.SendEmail(customer.getEmail(),subjectString,contentString);
+//        EmailSender emailSender = new EmailSender();
+//        emailSender.SendEmail(customer.getEmail(),subjectString,contentString);
 
         System.out.println(computerService.getAll());
         customerList.clear();
