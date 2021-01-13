@@ -13,6 +13,7 @@ import spring.PC.Order.Transport;
 import spring.service.*;
 
 import javax.imageio.ImageIO;
+import javax.mail.MessagingException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.swing.*;
 import javax.validation.Valid;
@@ -512,7 +513,7 @@ localID = customer.getId();
         return "payment";
     }
     @RequestMapping(value = "/Fianl")
-    public String Final(Model model){
+    public String Final(Model model) throws MessagingException {
 Customer customer = new Customer();
         for (Customer cust:customerList
         ) {if(cust.getId() == localID){
@@ -538,12 +539,35 @@ int totalSum = customer.getTotalPrice();
 
         model.addAttribute("totalSum",str1);
         model.addAttribute("idOrder",str2);
-
+        StringBuilder content = new StringBuilder();
+        content.append("Yours order is: ");
+        content.append("\n");
+        int number = 0;
         for (PeCet pecet:set
              ) {
+            number = number + 1;
+content.append(number + ". : " + pecet.getName());
+            content.append("\n");
 
             computerService.save(pecet,localID,localName);
         }
+        StringBuilder subject = new StringBuilder();
+        subject.append("Numer zamówienie: ");
+        subject.append(customer.getId());
+
+        String subjectString = subject.toString();
+
+        content.append("\n");
+        content.append("Total cost of Your order is: ");
+        content.append(customer.getTotalPrice());
+        content.append("\n");
+        content.append("Please do not send this money on my account !");
+        String contentString = content.toString(); 
+
+
+        EmailSender emailSender = new EmailSender();
+        emailSender.SendEmail(customer.getEmail(),subjectString,contentString);
+
         System.out.println(computerService.getAll());
         customerList.clear();
         set.clear();
